@@ -1,0 +1,14 @@
+Xây dựng HQ API (CRM/ERP): Mô phỏng Hợp đồng & Đơn hàng (B2B/B2C/Xuất khẩu)
+Stage 1
+
+Thiết kế schema đơn giản:
+
+farm_production
+
+raw_material_batch
+
+shipment_event
+
+Không cần ERD đẹp.
+
+
