@@ -1,0 +1,1 @@
+DATABASE_URL = "oracle+oracledb://admin_user:Nhan0944906711#@localhost:1521/?service_name=HQ_site"

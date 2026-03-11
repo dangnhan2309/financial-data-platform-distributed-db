@@ -1,14 +1,67 @@
 Xây dựng HQ API (CRM/ERP): Mô phỏng Hợp đồng & Đơn hàng (B2B/B2C/Xuất khẩu)
 Stage 1
 
-Thiết kế schema đơn giản:
 
-farm_production
-
-raw_material_batch
-
-shipment_event
-
-Không cần ERD đẹp.
+Chức năng:
+Customer management
+Quotation
+Contract
+Sales Order
 
 
+Luồng dữ liệu :
+
+Customer
+   ↓
+Quotation
+   ↓
+Proforma Invoice
+   ↓
+Contract
+   ↓
+Sale Order
+
+
+Cấu trúc folder :hq_api/
+│
+├── app
+│   │
+│   ├── main.py
+│   ├── config.py
+│   ├── database.py
+│   │
+│   ├── routers
+│   │   ├── customer_router.py
+│   │   ├── quotation_router.py
+│   │   ├── contract_router.py
+│   │   └── order_router.py
+│   │
+│   ├── services
+│   │   ├── customer_service.py
+│   │   ├── quotation_service.py
+│   │   ├── contract_service.py
+│   │   └── order_service.py
+│   │
+│   ├── repositories
+│   │   ├── customer_repository.py
+│   │   ├── quotation_repository.py
+│   │   ├── contract_repository.py
+│   │   └── order_repository.py
+│   │
+│   ├── schemas
+│   │   ├── customer_schema.py
+│   │   ├── quotation_schema.py
+│   │   ├── contract_schema.py
+│   │   └── order_schema.py
+│   │
+│   ├── models
+│   │   ├── customer_model.py
+│   │   ├── quotation_model.py
+│   │   ├── contract_model.py
+│   │   └── order_model.py
+│   │
+│   └── utils
+│       ├── id_generator.py
+│       └── timestamp.py
+│
+└── requirements.txt
