@@ -1,0 +1,9 @@
+-- Certification
+INSERT INTO certification (certification_id, name, issued_by) 
+VALUES ('HACCP', 'HACCP Food Safety Management', 'SGS Vietnam');
+INSERT INTO certification (certification_id, name, issued_by) 
+VALUES ('HALAL', 'Halal Certificate', 'HCA Vietnam');
+
+-- Quality Assurance
+INSERT INTO quality_assurance (quality_assurance_id, name, description) 
+VALUES ('QA_STD_01', 'Tiêu chuẩn xuất khẩu Nhật Bản', 'Kiểm soát nghiêm ngặt dư lượng thuốc trừ sâu và vi sinh');

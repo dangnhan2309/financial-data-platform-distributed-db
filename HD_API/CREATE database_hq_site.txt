@@ -66,7 +66,6 @@ CREATE TABLE staff (
     email VARCHAR2(200),
     phone VARCHAR2(50)
 );
-
 CREATE TABLE bank (
     bank_id VARCHAR2(50) PRIMARY KEY,
     bank_name VARCHAR2(200),
@@ -88,7 +87,6 @@ CREATE TABLE product (
     solid NUMBER,
     ph NUMBER,
     is_active NUMBER(1),
-
     CONSTRAINT fk_product_type
     FOREIGN KEY (product_type_id)
     REFERENCES product_type(product_type_id)
@@ -125,7 +123,6 @@ CREATE TABLE product_specification (
     FOREIGN KEY (quality_assurance_id)
     REFERENCES quality_assurance(quality_assurance_id)
 );
-
 CREATE TABLE production_lot (
     production_lot_id VARCHAR2(50) PRIMARY KEY,
     factory_id VARCHAR2(50),
@@ -284,4 +281,4 @@ CREATE TABLE payment (
     REFERENCES payment_term(payment_term_id),
     FOREIGN KEY (sale_order_id)
     REFERENCES sale_order(sale_order_id)
-);
+);	

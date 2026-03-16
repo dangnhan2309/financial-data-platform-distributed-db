@@ -1,0 +1,7 @@
+-- Customer Type
+INSERT INTO customer_type (customer_type_id, name) VALUES ('INT_DIST', 'International Distributor');
+INSERT INTO customer_type (customer_type_id, name) VALUES ('DOM_RETAIL', 'Domestic Retailer');
+
+-- Customer
+INSERT INTO customer (customer_id, customer_type_id, company_name, tax_id, country, address, email, status)
+VALUES ('CUST_KR_01', 'INT_DIST', 'K-Food Import Co., Ltd', '123-456-789', 'South Korea', 'Seoul, South Korea', 'import@kfood.kr', 'Active');

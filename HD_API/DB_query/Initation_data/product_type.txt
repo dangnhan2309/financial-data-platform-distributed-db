@@ -1,0 +1,6 @@
+INSERT INTO product_type (product_type_id, name) VALUES ('ALOE_VERA', 'Các sản phẩm từ Nha đam (Aloe Vera)');
+INSERT INTO product_type (product_type_id, name) VALUES ('COCO_JELLY', 'Các sản phẩm Thạch dừa (Nata de Coco)');
+INSERT INTO product_type (product_type_id, name) VALUES ('FROZEN_FRUIT', 'Trái cây cấp đông (IQF)');
+INSERT INTO product_type (product_type_id, name) VALUES ('DRY_FRUIT', 'Trái cây sấy khô');
+
+COMMIT;

@@ -1,0 +1,17 @@
+ cấu trúc: INCOTERM_ID (PK), Name,DESCRIPTION
+INSERT INTO incoterm (INCOTERM_ID, Name, DESCRIPTION)
+VALUES ('FOB', 'Free On Board', 'Giao hàng lên tàu tại cảng bốc hàng (VD: Cảng Cát Lái)');
+
+INSERT INTO incoterm (INCOTERM_ID, Name, DESCRIPTION)
+VALUES ('CIF', 'Cost, Insurance and Freight', 'Cảng đến (Người bán trả phí vận chuyển & bảo hiểm, rủi ro chuyển giao khi hàng lên tàu)');
+
+INSERT INTO incoterm (INCOTERM_ID, Name, DESCRIPTION)
+VALUES ('EXW', 'Ex Works', 'Tại xưởng/kho của GC Food (Người mua chịu mọi chi phí từ kho)');
+
+INSERT INTO incoterm (INCOTERM_ID, Name, DESCRIPTION)
+VALUES ('CFR', 'Cost and Freight', 'Cảng đến (Người bán trả tiền cước, rủi ro chuyển giao khi hàng lên tàu)');
+
+INSERT INTO incoterm (INCOTERM_ID, Name, DESCRIPTION)
+VALUES ('DAP', 'Delivered At Place', 'Giao tại địa điểm chỉ định của người mua');
+
+COMMIT;

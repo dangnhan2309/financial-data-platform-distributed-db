@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 # 1. Cấu hình thông tin kết nối
 DB_USER = "hq_owner"
-DB_PASSWORD = "Nhan0944906711#"
+DB_PASSWORD = "Nhan0944906711"
 DB_HOST = "localhost"
 DB_PORT = "1521"
 DB_SERVICE = "HQ_SITE" # Hoặc tên Service Name của bạn
@@ -29,11 +29,3 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # Các Model (Table) sau này sẽ kế thừa từ class này
 Base = declarative_base()
 
-# 5. Dependency: get_db
-# Hàm này dùng để inject vào các Route của FastAPI
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
