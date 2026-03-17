@@ -1,7 +1,0 @@
--- Product Type
-INSERT INTO product_type (product_type_id, name) VALUES ('ALOE', 'Nha đam (Aloe Vera)');
-INSERT INTO product_type (product_type_id, name) VALUES ('COCO', 'Thạch dừa (Nata de Coco)');
-
--- Factory
-INSERT INTO factory (factory_id, name, address) 
-VALUES ('FAC_NT', 'GC Ninh Thuan Factory', 'Thanh Hai Industrial Zone, Ninh Thuan');

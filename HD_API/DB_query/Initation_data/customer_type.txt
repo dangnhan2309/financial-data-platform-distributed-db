@@ -1,8 +1,0 @@
-INSERT INTO customer_type (customer_type_id, name) VALUES ('POT', 'Potential');
-INSERT INTO customer_type (customer_type_id, name) VALUES ('TAR', 'Target');
-INSERT INTO customer_type (customer_type_id, name) VALUES ('OLD', 'Old');
-INSERT INTO customer_type (customer_type_id, name) VALUES ('NEW', 'New');
-
-COMMIT;
-
-

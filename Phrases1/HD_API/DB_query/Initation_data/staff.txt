@@ -1,0 +1,12 @@
+INSERT INTO staff (staff_id,name,role,email,phone) VALUES('SF_02','Nguyen Van B','Sales Staff','nguyenvanb@gmail.com','091 111 111 ')
+
+
+INSERT INTO staff VALUES ('STF001','Nguyen Van An','Sales','Sales Executive','an@sales.com');
+
+INSERT INTO staff VALUES ('STF002','Tran Thi Binh','Sales','Sales Manager','binh@sales.com');
+INSERT INTO staff VALUES ('STF003','Le Minh Chau','Finance','Finance Officer','chau@finance.com');
+INSERT INTO staff VALUES ('STF004','Pham Duc Dat','Legal','Contract Specialist','dat@legal.com');
+INSERT INTO staff VALUES ('STF005','Hoang Gia Huy','Operations','Operations Executive','huy@ops.com');
+INSERT INTO staff VALUES ('STF006','Vu Thi Lan','Admin','System Admin','lan@admin.com');
+
+

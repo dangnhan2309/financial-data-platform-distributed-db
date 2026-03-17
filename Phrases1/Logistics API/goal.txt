@@ -1,0 +1,16 @@
+Giải thích logic thiết kế
+Mối quan hệ Đơn hàng - Giao hàng (sale_order : delivery_order):
+
+Sử dụng quan hệ 1:N. Một đơn hàng lớn có thể được giao thành nhiều đợt (ví dụ: do thiếu hàng trong kho hoặc khách muốn nhận từng phần).
+
+Gom hàng vào chuyến (delivery_order : shipment):
+
+Nhiều delivery_order (có thể từ các sale_order khác nhau nhưng cùng tuyến đường) được gom vào một shipment để tối ưu hóa thùng xe.
+
+Tuyến đường cố định (transport_route):
+
+Bảng này đóng vai trò là "Master Data". Nó chứa các thông tin cố định như quãng đường, thời gian dự kiến giữa các kho hoặc các vùng miền. shipment sẽ tham chiếu đến đây để biết mình phải đi theo lộ trình nào.
+
+Theo dõi thời gian thực (shipment_tracking):
+
+Bảng này lưu lịch sử (logs). Mỗi khi xe qua một trạm kiểm soát hoặc cập nhật GPS, một dòng mới sẽ được insert vào đây để người dùng theo dõi hành trình của cả lô hàng (shipment).

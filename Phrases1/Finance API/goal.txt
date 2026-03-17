@@ -1,0 +1,40 @@
+Phân tích luồng dữ liệu (Finance Workflow)
+Chuyển đổi từ Sale Order sang Invoice:
+
+Khi đơn hàng được xác nhận hoặc hàng đã xuất kho, hệ thống sẽ "đẩy" dữ liệu từ sale_order sang commercial_invoice.
+
+Lưu ý: Một sale_order có thể có nhiều commercial_invoice nếu bạn cho phép thanh toán theo từng giai đoạn (ví dụ: đợt 1 trả 30%, đợt 2 trả 70%).
+
+Khớp lệnh thanh toán (Reconciliation):
+
+Khi tiền về ngân hàng (bank), một bản ghi payment_transaction được tạo ra.
+
+Hệ thống sẽ kiểm tra amount trong payment_transaction so với total_amount trong commercial_invoice để tự động cập nhật status của hóa đơn (Ví dụ: từ 'Issued' sang 'Paid').
+
+Tách biệt Thuế (Tax):
+
+Trong invoice_item, tôi đã thêm trường tax_rate. Điều này cực kỳ quan trọng đối với kế toán tại Việt Nam (ví dụ các mặt hàng có thuế suất VAT khác nhau).
+
+
+
+
+Mối liên hệ với Invoice
+Thông thường, Invoice (Hóa đơn) là căn cứ pháp lý để đòi tiền. Vì vậy, payment_transaction nên gắn với invoice_id để biết giao dịch này trả tiền cho tờ hóa đơn nào.
+
+Tại sao bảng payment vẫn cần sale_order_id?
+Trong các dự án lớn (như GC Food bạn đang làm), khách hàng thường thanh toán theo tiến độ hợp đồng (ví dụ: cọc 30% khi ký SO, 70% khi giao hàng).
+
+Bảng payment giúp bạn quản lý các "đợt" này ngay cả khi chưa xuất commercial_invoice.
+
+3. Luồng dữ liệu thực tế (Example Flow)
+Sale Order 001 được tạo với tổng trị giá 100tr.
+
+Hệ thống tự động tạo 2 dòng trong bảng Payment:
+
+P1: Cọc 30% (30tr) - Hạn 15/03.
+
+P2: Thanh toán 70% (70tr) - Hạn 30/03.
+
+Khách chuyển khoản 30tr cho đợt 1 -> Tạo 1 dòng trong Payment_Transaction liên kết với P1.
+
+Khi hàng xuất kho -> Tạo Commercial Invoice -> Gắn ID hóa đơn vào các giao dịch tiếp theo để đối soát thuế.

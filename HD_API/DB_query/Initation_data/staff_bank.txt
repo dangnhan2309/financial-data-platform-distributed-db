@@ -1,9 +1,0 @@
--- Staff: Đại diện phòng kinh doanh xuất khẩu và Quản lý chất lượng
-INSERT INTO staff (staff_id, name, role, email, phone) 
-VALUES ('STF001', 'Nguyen Van A', 'Sales Manager', 'a.nguyen@gcfood.com.vn', '0901234567');
-INSERT INTO staff (staff_id, name, role, email, phone) 
-VALUES ('STF002', 'Tran Thi B', 'QC Specialist', 'b.tran@gcfood.com.vn', '0907654321');
-
--- Bank: Tài khoản nhận tiền thanh toán quốc tế
-INSERT INTO bank (bank_id, bank_name, account_name, account_number, swift_code, bank_address, country)
-VALUES ('VCB_USD', 'Vietcombank', 'GC FOOD JOINT STOCK COMPANY', '0071009876543', 'BFTV VNVX', 'Ho Chi Minh City, Vietnam', 'Vietnam');

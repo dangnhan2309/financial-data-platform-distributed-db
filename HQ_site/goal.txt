@@ -1,0 +1,356 @@
+Dưới đây là **danh sách các module hợp lý cho HQ_SITE** nếu bạn xây dựng **database trung tâm của doanh nghiệp**. Mỗi module có **mục tiêu quản lý rõ ràng** và phù hợp với hệ thống **Farm → Factory → HQ → Logistics** mà bạn đang mô phỏng.
+
+---
+
+# 1️⃣ HR Module – Human Resource Management
+
+**Mục tiêu:**
+Quản lý **nhân lực trong doanh nghiệp**.
+
+Các chức năng:
+
+* quản lý nhân viên
+* quản lý phòng ban
+* theo dõi chức vụ
+* quản lý lương và chấm công
+
+Các bảng chính:
+
+```text
+departments
+employees
+positions
+attendance
+salary
+```
+
+Ví dụ dữ liệu:
+
+```text
+Employee
+employee_id
+name
+department_id
+position_id
+hire_date
+salary
+```
+
+---
+
+# 2️⃣ CRM Module – Customer Relationship Management
+
+**Mục tiêu:**
+Quản lý **khách hàng và quan hệ với khách hàng**.
+
+Các chức năng:
+
+* lưu thông tin khách hàng
+* theo dõi lịch sử giao dịch
+* quản lý thị trường
+
+Các bảng chính:
+
+```text
+customers
+customer_contacts
+customer_addresses
+```
+
+Ví dụ:
+
+```text
+Customer
+customer_id
+name
+country
+industry
+```
+
+---
+
+# 3️⃣ Sales Module – Sales & Contract Management
+
+**Mục tiêu:**
+Quản lý **hợp đồng và đơn hàng bán hàng**.
+
+Các chức năng:
+
+* quản lý hợp đồng
+* quản lý đơn hàng
+* quản lý chi tiết sản phẩm
+
+Các bảng chính:
+
+```text
+contracts
+sales_orders
+order_items
+products
+```
+
+Ví dụ:
+
+```text
+Sales_Order
+order_id
+customer_id
+order_date
+status
+```
+
+---
+
+# 4️⃣ Production Module – Factory Production Management
+
+**Mục tiêu:**
+Quản lý **dữ liệu sản xuất từ các nhà máy**.
+
+Dữ liệu này thường **ETL từ Factory DB về HQ**.
+
+Các chức năng:
+
+* quản lý batch sản xuất
+* kết quả QC
+* theo dõi sản lượng
+
+Các bảng chính:
+
+```text
+production_batches
+qc_results
+production_output
+```
+
+Ví dụ:
+
+```text
+Production_Batch
+batch_id
+factory_id
+product_id
+quantity
+qc_status
+production_time
+```
+
+---
+
+# 5️⃣ Supply Chain Module – Raw Material & Procurement
+
+**Mục tiêu:**
+Quản lý **nguồn nguyên liệu và thu mua**.
+
+Dữ liệu có thể đến từ:
+
+* vùng trồng
+* nhà cung cấp
+* trạm thu mua
+
+Các bảng chính:
+
+```text
+suppliers
+raw_material_batches
+procurement_orders
+```
+
+Ví dụ:
+
+```text
+Raw_Material
+material_batch_id
+supplier_id
+quality_grade
+quantity
+```
+
+---
+
+# 6️⃣ Warehouse Module – Warehouse Management (WMS)
+
+**Mục tiêu:**
+Quản lý **tồn kho và luồng hàng hóa**.
+
+Các chức năng:
+
+* nhập kho
+* xuất kho
+* theo dõi tồn kho theo lô
+
+Các bảng chính:
+
+```text
+warehouses
+inventory
+stock_movements
+```
+
+Ví dụ:
+
+```text
+Inventory
+inventory_id
+product_id
+warehouse_id
+quantity
+```
+
+---
+
+# 7️⃣ Logistics Module – Transportation & Delivery
+
+**Mục tiêu:**
+Quản lý **vận chuyển hàng hóa**.
+
+Các chức năng:
+
+* tạo lệnh giao hàng
+* theo dõi shipment
+* quản lý vận chuyển quốc tế
+
+Các bảng chính:
+
+```text
+shipments
+delivery_orders
+transport_routes
+```
+
+Ví dụ:
+
+```text
+Shipment
+shipment_id
+order_id
+destination
+shipment_status
+```
+
+---
+
+# 8️⃣ Finance Module – Financial Management
+
+**Mục tiêu:**
+Quản lý **tài chính doanh nghiệp**.
+
+Các chức năng:
+
+* quản lý hóa đơn
+* quản lý thanh toán
+* theo dõi dòng tiền
+
+Các bảng chính:
+
+```text
+invoices
+payments
+financial_transactions
+```
+
+Ví dụ:
+
+```text
+Invoice
+invoice_id
+order_id
+amount
+status
+```
+
+---
+
+# 9️⃣ Integration / ETL Module – Data Integration
+
+**Mục tiêu:**
+Theo dõi **quá trình đồng bộ dữ liệu từ các hệ thống phân tán**.
+
+Các chức năng:
+
+* log ETL
+* theo dõi nguồn dữ liệu
+* kiểm tra lỗi ingestion
+
+Các bảng chính:
+
+```text
+etl_logs
+sync_history
+source_systems
+```
+
+Ví dụ:
+
+```text
+ETL_Log
+log_id
+source_system
+records_processed
+sync_time
+status
+```
+
+---
+
+# 🔟 Analytics / Reporting Module (Optional)
+
+**Mục tiêu:**
+Hỗ trợ **phân tích và báo cáo doanh nghiệp**.
+
+Các bảng có thể là:
+
+```text
+sales_summary
+production_summary
+inventory_summary
+```
+
+---
+
+# Tổng hợp các module HQ_SITE
+
+| Module       | Mục tiêu                     |
+| ------------ | ---------------------------- |
+| HR           | quản lý nhân sự              |
+| CRM          | quản lý khách hàng           |
+| Sales        | quản lý hợp đồng và đơn hàng |
+| Production   | quản lý dữ liệu sản xuất     |
+| Supply Chain | quản lý nguyên liệu          |
+| Warehouse    | quản lý tồn kho              |
+| Logistics    | quản lý vận chuyển           |
+| Finance      | quản lý tài chính            |
+| Integration  | quản lý ETL                  |
+| Analytics    | báo cáo                      |
+
+---
+
+# Kiến trúc HQ_SITE tổng thể
+
+```text
+HQ_SITE
+│
+├── HR
+├── CRM
+├── Sales
+├── Production
+├── SupplyChain
+├── Warehouse
+├── Logistics
+├── Finance
+├── Integration
+└── Analytics
+```
+
+---
+
+💡 Nếu làm **đồ án chuẩn enterprise**, HQ_SITE thường có khoảng:
+
+**15 – 25 tables** chia trong các module này.
+
+---
+
+Nếu bạn muốn, mình có thể giúp bạn **thiết kế luôn bộ bảng HQ_SITE hoàn chỉnh (~20 bảng + quan hệ ERD)** để:
+
+* phù hợp **ETL từ Farm / Factory**
+* đủ dùng cho **Stage 3 (index, partition, procedure)**
+* và **rất dễ bảo vệ đồ án**.

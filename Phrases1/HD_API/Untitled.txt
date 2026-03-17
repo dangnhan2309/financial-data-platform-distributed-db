@@ -1,0 +1,19 @@
+
+
+nhân sự 
+khách hàng
+-> ko dùng để phân tích , lưu trữ -> truy cập mọi lúc.
+
+
+Ko bảo mật ko đưa lên 
+nhân sự  quản lí nhân sự .
+
+dữ liệu ko quá quá quan trọng.\
+
+
+actor -> hệ thống tt , con người , ứng dụng , máy móc
+
+use case ->  1 chức năng , tính năng -> nút 
+
+
+cấp 1 : :
