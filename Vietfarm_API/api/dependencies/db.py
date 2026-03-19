@@ -1,0 +1,3 @@
+from api.utils.db import get_db
+
+__all__ = ["get_db"]
