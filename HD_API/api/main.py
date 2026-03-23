@@ -1,6 +1,4 @@
 from fastapi import FastAPI, Depends, HTTPException
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 
@@ -26,10 +24,6 @@ app = FastAPI(
     description="Headquarter CRM/ERP API for Customer, Quotation, Contract and Sales Order management"
 )
 
-# =========================================================
-# 1.5. Mount Static Files (UI)
-# =========================================================
-app.mount("/static", StaticFiles(directory="api/static"), name="static")
 
 # =========================================================
 # 2. Tạo bảng (chỉ dùng cho development)
@@ -56,7 +50,11 @@ app.include_router(sale_order_router.router)
 
 @app.get("/")
 def read_root():
-    return RedirectResponse(url="/static/index.html")
+    return {
+        "message": "Welcome to HQ CRM/ERP API",
+        "status": "Server is running",
+        "docs": "/docs"
+    }
 
 
 # =========================================================
