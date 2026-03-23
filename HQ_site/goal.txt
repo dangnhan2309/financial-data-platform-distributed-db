@@ -349,6 +349,7 @@ HQ_SITE
 
 ---
 
+
 Nếu bạn muốn, mình có thể giúp bạn **thiết kế luôn bộ bảng HQ_SITE hoàn chỉnh (~20 bảng + quan hệ ERD)** để:
 
 * phù hợp **ETL từ Farm / Factory**

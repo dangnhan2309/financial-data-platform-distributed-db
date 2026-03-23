@@ -9,19 +9,6 @@ class QuotationBase(BaseModel):
     expiry_date: date
     incoterm_id: str
     payment_term_id: str
-
-
-class QuotationCreate(QuotationBase):
-    quotation_id: str
-
-
-class QuotationResponse(QuotationBase):
-    quotation_id: str
-
-    class Config:
-        from_attributes = True
-
-
 class QuotationItemBase(BaseModel):
     quotation_id: str
     product_id: str
@@ -31,6 +18,20 @@ class QuotationItemBase(BaseModel):
 
 class QuotationItemCreate(QuotationItemBase):
     pass
+
+
+
+class QuotationCreate(QuotationBase):
+    quotation_id: str
+    items: list[QuotationItemCreate]
+
+
+class QuotationResponse(QuotationBase):
+    quotation_id: str
+
+    class Config:
+        from_attributes = True
+
 
 
 class QuotationItemResponse(QuotationItemBase):
