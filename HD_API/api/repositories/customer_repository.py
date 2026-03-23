@@ -8,7 +8,6 @@ def create_customer(db: Session, customer: Customer):
     db.refresh(customer)
     return customer
 
-
 def get_customer_by_id(db: Session, customer_id: str):
     return db.query(Customer).filter(
         Customer.customer_id == customer_id

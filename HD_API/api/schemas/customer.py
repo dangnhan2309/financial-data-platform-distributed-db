@@ -23,9 +23,7 @@ class CustomerBase(BaseModel):
 
 
 class CustomerCreate(CustomerBase):
-    customer_id: str
-
-
+    pass
 class CustomerResponse(CustomerBase):
     customer_id: str
 

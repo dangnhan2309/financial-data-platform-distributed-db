@@ -37,3 +37,68 @@ POST /quotation
 POST /contract
 POST /sale-order
 GET /orders
+
+
+
+constants
+    contract_status.py
+    order_status.py
+dependencies
+    auth.py
+    db.py
+models
+
+    contract.py
+    customer.py
+    master_data.py
+    payment.py
+    product.py
+    production.py
+    proforma.py
+    quotation.py
+    sale_order.py
+    shipment.py
+    __init__.py
+repositories
+
+    contract_repository.py
+    customer_repository.py
+    proforma_repository.py
+    quotation_repository.py
+    sale_order_repository.py
+    __init__.py
+routers
+
+    contract_router.py
+    customer_router.py
+    proforma_router.py
+    quotation_router.py
+    sale_order_router.py
+    __init__.py
+schemas
+
+    contract.py
+    customer.py
+    master_data.py
+    payment.py
+    product.py
+    production.py
+    proforma.py
+    quotation.py
+    sale_order.py
+    shipment.py
+    __init__.py
+services
+
+    contract_service.py
+    customer_service.py
+    proforma_service.py
+    quotation_service.py
+    sale_order_service.py
+    __init__.py
+utils
+    id_generator.py
+
+config.py
+database.py
+main.py

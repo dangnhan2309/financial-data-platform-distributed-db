@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, ForeignKey
 from api.database import Base
+from api.models.foreignkey_model import CustomerType
 
 
 class Customer(Base):

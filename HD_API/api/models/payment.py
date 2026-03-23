@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Date, Float, ForeignKey
 from api.database import Base
 
 
-class Payment(Base):
+class Payment(Base): # OBJECT -> CỦA THỰC THỂ PAYMENT
     __tablename__ = "payment"
 
     payment_id = Column(String(50), primary_key=True)

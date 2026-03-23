@@ -9,7 +9,6 @@ class ProductionLotBase(BaseModel):
     expiry_date: date
     status: int
 
-
 class ProductionLotCreate(ProductionLotBase):
     production_lot_id: str
 

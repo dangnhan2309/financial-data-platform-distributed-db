@@ -40,7 +40,7 @@ def create_quotation_service(db: Session, quotation_data):
         items = []
 
         for item in quotation_data.items:
-            items.apiend(
+            items.append(
                 QuotationItem(
                     quotation_id=quotation_id,
                     product_id=item.product_id,

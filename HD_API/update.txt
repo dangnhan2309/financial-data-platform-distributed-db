@@ -1,0 +1,21 @@
+Cần mở rộng
+
+models
+
+schemas
+
+repositories
+
+services
+
+routers
+
+Cập nhật nhẹ
+
+sale_order.py
+
+shipment.py
+
+payment.py
+
+main.py
