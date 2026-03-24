@@ -1,0 +1,179 @@
+-- PRODUCT_TYPE
+INSERT INTO PRODUCT_TYPE (product_type_id, name, description) VALUES ('TYPE-4f2a8c1d', 'Aloe Vera Drink', 'Nước nha đam đóng chai');
+INSERT INTO PRODUCT_TYPE (product_type_id, name, description) VALUES ('TYPE-9b3e7f2a', 'Coconut Water', 'Nước dừa tươi nguyên chất');
+INSERT INTO PRODUCT_TYPE (product_type_id, name, description) VALUES ('TYPE-1a5d6e8c', 'Fruit Jelly', 'Thạch trái cây các loại');
+INSERT INTO PRODUCT_TYPE (product_type_id, name, description) VALUES ('TYPE-7c2b4a1f', 'Dried Fruit', 'Trái cây sấy khô');
+INSERT INTO PRODUCT_TYPE (product_type_id, name, description) VALUES ('TYPE-3e8f9d0b', 'Vegetable Juice', 'Nước ép rau củ hỗn hợp');
+
+-- PRODUCT
+INSERT INTO PRODUCT (product_id, product_type_id, name, price, brix) VALUES ('PROD-a1b2c3d4', 'TYPE-4f2a8c1d', 'Aloe Vera Original 500ml', 15000, 12.5);
+INSERT INTO PRODUCT (product_id, product_type_id, name, price, brix) VALUES ('PROD-e5f6g7h8', 'TYPE-9b3e7f2a', 'Pure Coconut Water 330ml', 12000, 5.0);
+INSERT INTO PRODUCT (product_id, product_type_id, name, price, brix) VALUES ('PROD-i9j0k1l2', 'TYPE-1a5d6e8c', 'Lychee Jelly Cup', 5000, 15.2);
+INSERT INTO PRODUCT (product_id, product_type_id, name, price, brix) VALUES ('PROD-m3n4o5p6', 'TYPE-7c2b4a1f', 'Soft Dried Mango', 45000, 0);
+INSERT INTO PRODUCT (product_id, product_type_id, name, price, brix) VALUES ('PROD-q7r8s9t0', 'TYPE-3e8f9d0b', 'Mixed Veggie Juice', 25000, 8.5);
+
+-- CUSTOMER_TYPE
+INSERT INTO CUSTOMER_TYPE (customer_type_id, name) VALUES ('CTYP-88a1b2c3', 'Wholesale');
+INSERT INTO CUSTOMER_TYPE (customer_type_id, name) VALUES ('CTYP-99d4e5f6', 'Retailer');
+
+-- CUSTOMER (Sử dụng generate_customer_id)
+INSERT INTO CUSTOMER (customer_id, customer_type_id, company_name, customer_code) VALUES ('CUS-f3a2b1c0', 'CTYP-88a1b2c3', 'WinMart HQ', 'WM-001');
+INSERT INTO CUSTOMER (customer_id, customer_type_id, company_name, customer_code) VALUES ('CUS-e4d5c6b7', 'CTYP-88a1b2c3', 'Coop Mart', 'CP-002');
+INSERT INTO CUSTOMER (customer_id, customer_type_id, company_name, customer_code) VALUES ('CUS-a8b9c0d1', 'CTYP-99d4e5f6', '7-Eleven VN', 'SE-003');
+INSERT INTO CUSTOMER (customer_id, customer_type_id, company_name, customer_code) VALUES ('CUS-1a2b3c4d', 'CTYP-99d4e5f6', 'Circle K', 'CK-004');
+INSERT INTO CUSTOMER (customer_id, customer_type_id, company_name, customer_code) VALUES ('CUS-5e6f7g8h', 'CTYP-88a1b2c3', 'Bach Hoa Xanh', 'BHX-005');
+
+-- STAFF (Sử dụng generate_staff_id)
+INSERT INTO STAFF (staff_id, name, role) VALUES ('STF-9c8b7a6e', 'Nguyen Van A', 'Sales Manager');
+INSERT INTO STAFF (staff_id, name, role) VALUES ('STF-5d4c3b2a', 'Tran Thi B', 'Sales Executive');
+INSERT INTO STAFF (staff_id, name, role) VALUES ('STF-1f2e3d4c', 'Le Van C', 'Accountant');
+INSERT INTO STAFF (staff_id, name, role) VALUES ('STF-0a1b2c3d', 'Pham Thi D', 'Logistics Coordinator');
+INSERT INTO STAFF (staff_id, name, role) VALUES ('STF-e5f6g7h8', 'Hoang Van E', 'Data Engineer');
+
+-- INCOTERM & PAYMENT_TERM (Mẫu)
+INSERT INTO INCOTERM (incoterm_id, name) VALUES ('INC-f1a2', 'FOB');
+INSERT INTO PAYMENT_TERM (payment_term_id, description, number_of_days) VALUES ('PAY-d3e4', 'Net 30', 30);
+
+-- QUOTATION (Sử dụng generate_quotation_id)
+INSERT INTO QUOTATION (quotation_id, customer_id, staff_id, quotation_date, total_amount) 
+VALUES ('QTN-8b7c6d5a', 'CUS-f3a2b1c0', 'STF-9c8b7a6e', CURRENT_DATE, 5000000);
+INSERT INTO QUOTATION (quotation_id, customer_id, staff_id, quotation_date, total_amount) 
+VALUES ('QTN-1a2b3c4d', 'CUS-e4d5c6b7', 'STF-5d4c3b2a', CURRENT_DATE, 12000000);
+INSERT INTO QUOTATION (quotation_id, customer_id, staff_id, quotation_date, total_amount) 
+VALUES ('QTN-e5f6g7h8', 'CUS-a8b9c0d1', 'STF-9c8b7a6e', CURRENT_DATE, 3000000);
+INSERT INTO QUOTATION (quotation_id, customer_id, staff_id, quotation_date, total_amount) 
+VALUES ('QTN-i9j0k1l2', 'CUS-1a2b3c4d', 'STF-5d4c3b2a', CURRENT_DATE, 8500000);
+INSERT INTO QUOTATION (quotation_id, customer_id, staff_id, quotation_date, total_amount) 
+VALUES ('QTN-m3n4o5p6', 'CUS-5e6f7g8h', 'STF-9c8b7a6e', CURRENT_DATE, 15000000);
+
+-- CONTRACT (Sử dụng generate_contract_id)
+INSERT INTO CONTRACT (contract_id, customer_id, staff_id, contract_date, total_contract_value)
+VALUES ('CON-d4c3b2a1', 'CUS-f3a2b1c0', 'STF-9c8b7a6e', CURRENT_DATE, 100000000);
+INSERT INTO CONTRACT (contract_id, customer_id, staff_id, contract_date, total_contract_value)
+VALUES ('CON-7e8f9a0b', 'CUS-e4d5c6b7', 'STF-5d4c3b2a', CURRENT_DATE, 250000000);
+INSERT INTO CONTRACT (contract_id, customer_id, staff_id, contract_date, total_contract_value)
+VALUES ('CON-1c2d3e4f', 'CUS-a8b9c0d1', 'STF-9c8b7a6e', CURRENT_DATE, 50000000);
+INSERT INTO CONTRACT (contract_id, customer_id, staff_id, contract_date, total_contract_value)
+VALUES ('CON-5g6h7i8j', 'CUS-1a2b3c4d', 'STF-5d4c3b2a', CURRENT_DATE, 120000000);
+INSERT INTO CONTRACT (contract_id, customer_id, staff_id, contract_date, total_contract_value)
+VALUES ('CON-9k0l1m2n', 'CUS-5e6f7g8h', 'STF-9c8b7a6e', CURRENT_DATE, 300000000);
+
+-- Đừng quên COMMIT để lưu dữ liệu vĩnh viễn
+COMMIT;
+-- PACKAGING_SPECIFICATION
+INSERT INTO PACKAGING_SPECIFICATION (packaging_id, name, unit_of_measure, volume) VALUES ('PKG-7a8b9c0d', 'Glass Bottle 500ml', 'Bottle', 500);
+INSERT INTO PACKAGING_SPECIFICATION (packaging_id, name, unit_of_measure, volume) VALUES ('PKG-1e2f3g4h', 'Tetra Pak 1L', 'Carton', 1000);
+INSERT INTO PACKAGING_SPECIFICATION (packaging_id, name, unit_of_measure, volume) VALUES ('PKG-5i6j7k8l', 'Plastic Cup 200g', 'Cup', 200);
+INSERT INTO PACKAGING_SPECIFICATION (packaging_id, name, unit_of_measure, volume) VALUES ('PKG-9m0n1o2p', 'Aluminum Can 330ml', 'Can', 330);
+INSERT INTO PACKAGING_SPECIFICATION (packaging_id, name, unit_of_measure, volume) VALUES ('PKG-3q4r5s6t', 'Vacuum Bag 1kg', 'Bag', 1000);
+
+-- CERTIFICATION
+INSERT INTO CERTIFICATION (certification_id, name, issued_by, status) VALUES ('CERT-1a2b3c4d', 'ISO 22000', 'SGS', 'Active');
+INSERT INTO CERTIFICATION (certification_id, name, issued_by, status) VALUES ('CERT-5e6f7g8h', 'HACCP', 'Intertek', 'Active');
+INSERT INTO CERTIFICATION (certification_id, name, issued_by, status) VALUES ('CERT-9i0j1k2l', 'HALAL', 'HCA', 'Active');
+INSERT INTO CERTIFICATION (certification_id, name, issued_by, status) VALUES ('CERT-3m4n5o6p', 'FDA Registration', 'FDA US', 'Active');
+INSERT INTO CERTIFICATION (certification_id, name, issued_by, status) VALUES ('CERT-7q8r9s0t', 'Organic USDA', 'Control Union', 'Active');
+
+-- QUALITY_ASSURANCE
+INSERT INTO QUALITY_ASSURANCE (quality_assurance_id, name, standard_reference) VALUES ('QA-a1b2c3d4', 'Microbiological Test', 'Standard-001');
+INSERT INTO QUALITY_ASSURANCE (quality_assurance_id, name, standard_reference) VALUES ('QA-e5f6g7h8', 'Physicochemical Analysis', 'Standard-002');
+INSERT INTO QUALITY_ASSURANCE (quality_assurance_id, name, standard_reference) VALUES ('QA-i9j0k1l2', 'Sensory Evaluation', 'Standard-003');
+INSERT INTO QUALITY_ASSURANCE (quality_assurance_id, name, standard_reference) VALUES ('QA-m3n4o5p6', 'Heavy Metal Screen', 'Standard-004');
+INSERT INTO QUALITY_ASSURANCE (quality_assurance_id, name, standard_reference) VALUES ('QA-q7r8s9t0', 'Shelf-life Stability', 'Standard-005');
+
+-- PRODUCT_SPECIFICATION (Bảng liên kết quan trọng)
+INSERT INTO PRODUCT_SPECIFICATION (product_specification_id, product_id, packaging_id, certification_id, quality_assurance_id, origin) 
+VALUES ('SPEC-b1c2d3e4', 'PROD-a1b2c3d4', 'PKG-7a8b9c0d', 'CERT-1a2b3c4d', 'QA-a1b2c3d4', 'Vietnam');
+INSERT INTO PRODUCT_SPECIFICATION (product_specification_id, product_id, packaging_id, certification_id, quality_assurance_id, origin) 
+VALUES ('SPEC-f5g6h7i8', 'PROD-e5f6g7h8', 'PKG-9m0n1o2p', 'CERT-5e6f7g8h', 'QA-e5f6g7h8', 'Vietnam');
+-- TRANSPORT_ROUTE
+INSERT INTO TRANSPORT_ROUTE (route_id, route_name, origin_location, destination_location) VALUES ('ROU-1a2b3c4d', 'HCM to New York', 'Cat Lai Port', 'NY Port');
+INSERT INTO TRANSPORT_ROUTE (route_id, route_name, origin_location, destination_location) VALUES ('ROU-5e6f7g8h', 'HCM to Tokyo', 'Cat Lai Port', 'Tokyo Port');
+INSERT INTO TRANSPORT_ROUTE (route_id, route_name, origin_location, destination_location) VALUES ('ROU-9i0j1k2l', 'HCM to Singapore', 'Cat Lai Port', 'Jurong Port');
+INSERT INTO TRANSPORT_ROUTE (route_id, route_name, origin_location, destination_location) VALUES ('ROU-3m4n5o6p', 'HCM to Hamburg', 'Cat Lai Port', 'Hamburg Port');
+INSERT INTO TRANSPORT_ROUTE (route_id, route_name, origin_location, destination_location) VALUES ('ROU-7q8r9s0t', 'HCM to Sydney', 'Cat Lai Port', 'Sydney Port');
+
+-- SHIPMENT
+INSERT INTO SHIPMENT (shipment_id, route_id, status) VALUES ('SHP-a1b2c3d4', 'ROU-1a2b3c4d', 'In Transit');
+INSERT INTO SHIPMENT (shipment_id, route_id, status) VALUES ('SHP-e5f6g7h8', 'ROU-5e6f7g8h', 'Pending');
+-- BANK
+INSERT INTO BANK (bank_id, bank_name, account_number, swift_code) VALUES ('BNK-1a2b3c4d', 'Vietcombank', '0011001234567', 'VCBKVNVN');
+INSERT INTO BANK (bank_id, bank_name, account_number, swift_code) VALUES ('BNK-5e6f7g8h', 'Techcombank', '1902888999001', 'VBAKVNVN');
+INSERT INTO BANK (bank_id, bank_name, account_number, swift_code) VALUES ('BNK-9i0j1k2l', 'HSBC Vietnam', '002333444555', 'HSBCVNVN');
+INSERT INTO BANK (bank_id, bank_name, account_number, swift_code) VALUES ('BNK-3m4n5o6p', 'Standard Chartered', '888777666', 'SCBLVNVN');
+INSERT INTO BANK (bank_id, bank_name, account_number, swift_code) VALUES ('BNK-7q8r9s0t', 'BIDV', '1201000098765', 'BIDVVNVN');
+
+-- COMMERCIAL_INVOICE
+INSERT INTO COMMERCIAL_INVOICE (invoice_id, currency, total_amount, status) VALUES ('INV-a1b2c3d4', 'USD', 25000.50, 'Issued');
+INSERT INTO COMMERCIAL_INVOICE (invoice_id, currency, total_amount, status) VALUES ('INV-e5f6g7h8', 'EUR', 18200.00, 'Paid');
+
+-- PAYMENT
+INSERT INTO PAYMENT (payment_id, expected_amount, paid_amount, status) VALUES ('PAY-i9j0k1l2', 25000.50, 0, 'Pending');
+INSERT INTO PAYMENT (payment_id, expected_amount, paid_amount, status) VALUES ('PAY-m3n4o5p6', 18200.00, 18200.00, 'Completed');
+
+COMMIT;
+-- Chèn chi tiết cho Báo giá 1 (QTN-8b7c6d5a) - Khách hàng WinMart
+INSERT INTO QUOTATION_ITEM (quotation_id, product_id, quantity, unit_price, discount, tax_rate, total_price) 
+VALUES ('QTN-8b7c6d5a', 'PROD-a1b2c3d4', 100, 15000, 5, 10, 1425000);
+
+INSERT INTO QUOTATION_ITEM (quotation_id, product_id, quantity, unit_price, discount, tax_rate, total_price) 
+VALUES ('QTN-8b7c6d5a', 'PROD-e5f6g7h8', 200, 12000, 0, 10, 2640000);
+
+-- Chèn chi tiết cho Báo giá 2 (QTN-1a2b3c4d) - Khách hàng Coop Mart
+INSERT INTO QUOTATION_ITEM (quotation_id, product_id, quantity, unit_price, discount, tax_rate, total_price) 
+VALUES ('QTN-1a2b3c4d', 'PROD-i9j0k1l2', 500, 5000, 10, 10, 2475000);
+
+-- Chèn chi tiết cho Báo giá 3 (QTN-e5f6g7h8) - Khách hàng 7-Eleven
+INSERT INTO QUOTATION_ITEM (quotation_id, product_id, quantity, unit_price, discount, tax_rate, total_price) 
+VALUES ('QTN-e5f6g7h8', 'PROD-m3n4o5p6', 50, 45000, 0, 10, 2475000);
+
+-- Chèn chi tiết cho Báo giá 4 (QTN-i9j0k1l2) - Khách hàng Circle K
+INSERT INTO QUOTATION_ITEM (quotation_id, product_id, quantity, unit_price, discount, tax_rate, total_price) 
+VALUES ('QTN-i9j0k1l2', 'PROD-q7r8s9t0', 150, 25000, 5, 10, 3562500);
+
+-- Lưu thay đổi
+COMMIT;
+-- COMPANY_TYPE
+INSERT INTO COMPANY_TYPE (company_type_id, name, status) VALUES ('CTYP-a1b2c3d4', 'Manufacturer', 'Active');
+INSERT INTO COMPANY_TYPE (company_type_id, name, status) VALUES ('CTYP-e5f6g7h8', 'Distributor', 'Active');
+
+-- COMPANY
+INSERT INTO COMPANY (company_id, company_type_id, name, short_name, tax_id, status) 
+VALUES ('COMP-9c8b7a6e', 'CTYP-a1b2c3d4', 'GC Food Group Joint Stock Company', 'GC Food', '0312345678', 'Active');
+
+-- FACTORY (Thuộc GC Food)
+INSERT INTO FACTORY (factory_id, company_id, name, address, status) 
+VALUES ('FAC-1f2e3d4c', 'COMP-9c8b7a6e', 'Nha Dam Ninh Thuan Factory', 'Phan Rang, Ninh Thuan', 'Active');
+INSERT INTO FACTORY (factory_id, company_id, name, address, status) 
+VALUES ('FAC-0a1b2c3d', 'COMP-9c8b7a6e', 'Thach Dua Dong Nai Factory', 'Long Thanh, Dong Nai', 'Active');
+
+-- CONTACT_PERSON (Người liên hệ tại phía Khách hàng - dùng CUS-f3a2b1c0 từ bước trước)
+INSERT INTO CONTACT_PERSON (contact_person_id, customer_id, name, email, position) 
+VALUES ('CPER-7q8r9s0t', 'CUS-f3a2b1c0', 'Mr. Kevin Nguyen', 'kevin@winmart.vn', 'Procurement Manager');
+
+-- CONTRACT_TYPE
+INSERT INTO CONTRACT_TYPE (contract_type_id, name, status) VALUES ('CNTY-b1c2d3e4', 'Annual Framework', 'Active');
+INSERT INTO CONTRACT_TYPE (contract_type_id, name, status) VALUES ('CNTY-f5g6h7i8', 'Spot Contract', 'Active');
+-- PROFORMA_INVOICE (Dựa trên QTN-8b7c6d5a)
+INSERT INTO PROFORMA_INVOICE (proforma_invoice_id, quotation_id, staff_id, total_contract_value, currency, status) 
+VALUES ('PRO-a1s2d3f4', 'QTN-8b7c6d5a', 'STF-9c8b7a6e', 5000.00, 'USD', 'Confirmed');
+
+-- CONTRACT_ITEM (Chi tiết các mặt hàng trong Hợp đồng CON-d4c3b2a1)
+INSERT INTO CONTRACT_ITEM (contract_id, product_id, quantity, unit_price, tax_rate, total_price) 
+VALUES ('CON-d4c3b2a1', 'PROD-a1b2c3d4', 1000, 1.5, 10, 1650);
+INSERT INTO CONTRACT_ITEM (contract_id, product_id, quantity, unit_price, tax_rate, total_price) 
+VALUES ('CON-d4c3b2a1', 'PROD-e5f6g7h8', 2000, 1.2, 10, 2640);
+
+-- SALE_ORDER (Lệnh bán hàng sinh ra từ Hợp đồng)
+INSERT INTO SALE_ORDER (sale_order_id, contract_id, order_date, delivery_date, total_amount, status) 
+VALUES ('SAL-9z8x7c6v', 'CON-d4c3b2a1', TO_DATE('2026-03-24', 'YYYY-MM-DD'), TO_DATE('2026-04-10', 'YYYY-MM-DD'), 4290, 'Pending');
+-- INVOICE_ITEM (Chi tiết dòng hàng cho hóa đơn INV-a1b2c3d4)
+INSERT INTO INVOICE_ITEM (invoice_item_id, invoice_id, product_id, quantity, unit_price, total_price) 
+VALUES ('IVIT-1q2w3e4r', 'INV-a1b2c3d4', 'PROD-a1b2c3d4', 1000, 1.5, 1500);
+
+-- PAYMENT_TRANSACTION (Giao dịch chuyển khoản thực tế qua Ngân hàng BNK-1a2b3c4d)
+INSERT INTO PAYMENT_TRANSACTION (transaction_id, payment_id, bank_id, amount, payment_date, payment_method, payment_status) 
+VALUES ('TXN-m0n9b8v7', 'PAY-i9j0k1l2', 'BNK-1a2b3c4d', 25000.50, CURRENT_DATE, 'Bank Transfer', 'Success');
+
+-- Hoàn tất quá trình
+COMMIT;

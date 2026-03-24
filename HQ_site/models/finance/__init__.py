@@ -1,0 +1,1 @@
+# thực hiện viết các model liên quan đến tài chính ở đây, ví dụ như:

@@ -1,0 +1,48 @@
+# Root folder
+New-Item -ItemType Directory -Path "hq_site"
+
+# Move vào folder
+Set-Location "hq_site"
+
+# Main file
+New-Item -ItemType File -Name "main.py"
+
+# Core
+New-Item -ItemType Directory -Path "core"
+New-Item -ItemType File -Path "core/config.py"
+New-Item -ItemType File -Path "core/database.py"
+
+# Models
+New-Item -ItemType Directory -Path "models/master"
+New-Item -ItemType Directory -Path "models/finance"
+New-Item -ItemType Directory -Path "models/sales"
+
+# Schemas
+New-Item -ItemType Directory -Path "schemas/master"
+New-Item -ItemType Directory -Path "schemas/finance"
+New-Item -ItemType Directory -Path "schemas/sales"
+
+# Repository
+New-Item -ItemType Directory -Path "repository/master"
+New-Item -ItemType Directory -Path "repository/finance"
+New-Item -ItemType Directory -Path "repository/sales"
+
+# Services
+New-Item -ItemType Directory -Path "services/master"
+New-Item -ItemType Directory -Path "services/finance"
+New-Item -ItemType Directory -Path "services/sales"
+
+# Routers
+New-Item -ItemType Directory -Path "routers"
+New-Item -ItemType File -Path "routers/hq.py"
+New-Item -ItemType File -Path "routers/finance.py"
+New-Item -ItemType File -Path "routers/sales.py"
+
+# Dependencies
+New-Item -ItemType Directory -Path "dependencies"
+New-Item -ItemType File -Path "dependencies/db.py"
+
+# (Optional) Tạo __init__.py cho tất cả folder (best practice Python package)
+Get-ChildItem -Recurse -Directory | ForEach-Object {
+    New-Item -ItemType File -Path "$($_.FullName)/__init__.py" -Force
+}

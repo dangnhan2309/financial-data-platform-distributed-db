@@ -1,0 +1,15 @@
+class Product(Base):
+    __tablename__ = "product"
+    product_id = Column(String(50), primary_key=True)
+    product_type_id = Column(String(50), ForeignKey("product_type.product_type_id"))
+    name = Column(String(255), nullable=False)
+    description = Column(Text)
+    price = Column(Float)
+    application = Column(String(255))
+    brix = Column(Float)
+    size_val = Column(String(50))
+    solid = Column(Float)
+    ph = Column(Float)
+    is_active = Column(Integer, default=1)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, onupdate=func.now())

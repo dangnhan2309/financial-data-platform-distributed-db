@@ -1,0 +1,80 @@
+
+
+## 1. 20 Câu truy vấn (Query) - Mức độ Phân tích
+1. Thống kê tổng doanh thu theo từng loại sản phẩm (`PRODUCT_TYPE`) trong quý 1/2026.
+2. Tìm 5 khách hàng (`CUSTOMER`) có giá trị hợp đồng (`CONTRACT`) cao nhất nhưng chưa hoàn tất thanh toán.
+3. Tính tỷ lệ chuyển đổi từ Báo giá (`QUOTATION`) sang Hợp đồng (`CONTRACT`) của từng nhân viên kinh doanh.
+4. Liệt kê các sản phẩm có số lượng tồn kho dự kiến thấp hơn số lượng đã cam kết trong các `SALE_ORDER` chưa giao.
+5. Tính thời gian trung bình từ lúc ký hợp đồng (`CONTRACT`) đến lúc có lệnh giao hàng (`DELIVERY_ORDER`).
+6. Xác định tuyến đường vận chuyển (`TRANSPORT_ROUTE`) có chi phí trung bình trên mỗi km thấp nhất.
+7. Liệt kê danh sách các sản phẩm chưa từng xuất hiện trong bất kỳ báo giá nào trong 6 tháng qua.
+8. Tính tổng dư nợ của từng khách hàng dựa trên `COMMERCIAL_INVOICE` và `PAYMENT_TRANSACTION`.
+9. Tìm các hợp đồng có tổng giá trị (`total_contract_value`) sai lệch so với tổng tiền của các `CONTRACT_ITEM`.
+10. Phân loại khách hàng theo nhóm ABC dựa trên tổng doanh thu (Nguyên lý Pareto).
+11. Tính toán lợi nhuận gộp ước tính trên mỗi đơn hàng (Giá bán - Giá thành sản xuất giả định).
+12. Liệt kê các nhà máy (`FACTORY`) đang cung cấp sản phẩm cho các hợp đồng xuất khẩu sang thị trường "USA".
+13. Thống kê số lượng đơn hàng bị trễ hạn giao (`actual_delivery_date` > `delivery_date`).
+14. Tìm ngân hàng (`BANK`) có tần suất giao dịch thanh toán (`PAYMENT_TRANSACTION`) lớn nhất.
+15. Truy xuất lịch sử thay đổi trạng thái của một đơn hàng cụ thể (Sử dụng dữ liệu từ các bảng liên quan).
+16. So sánh doanh số bán hàng giữa các khu vực địa lý (`city` hoặc `country` của khách hàng).
+17. Tính số ngày trung bình khách hàng nợ tiền kể từ khi xuất hóa đơn thương mại.
+18. Liệt kê các chứng chỉ (`CERTIFICATION`) sắp hết hạn trong vòng 30 ngày tới của các sản phẩm chủ lực.
+19. Tìm các cặp sản phẩm thường được mua cùng nhau trong một đơn hàng (`Market Basket Analysis`).
+20. Thống kê tổng trọng lượng (`total_weight`) hàng hóa đã vận chuyển theo từng đơn vị vận tải (`carrier_id`).
+
+---
+
+## 2. 10 Thủ tục (Stored Procedure)
+1. `SP_CREATE_CONTRACT_FROM_PI`: Tự động tạo Hợp đồng và các `CONTRACT_ITEM` từ một `PROFORMA_INVOICE` đã duyệt.
+2. `SP_UPDATE_ORDER_STATUS`: Cập nhật trạng thái đơn hàng và tự động gửi thông báo (insert vào bảng log) khi trạng thái thay đổi.
+3. `SP_CALCULATE_CUSTOMER_DEBT`: Tính toán và cập nhật lại số dư nợ hiện tại vào bảng `CUSTOMER`.
+4. `SP_GENERATE_MONTHLY_INVOICE`: Tự động gom các đơn hàng trong tháng của một khách hàng để xuất một hóa đơn tổng.
+5. `SP_CANCEL_EXPIRED_QUOTATIONS`: Tự động chuyển trạng thái 'Expired' cho các báo giá đã quá ngày `expiry_date`.
+6. `SP_REALLOCATE_STOCK`: Điều chuyển kế hoạch sản xuất giữa các nhà máy khi một nhà máy quá tải.
+7. `SP_APPROVE_PAYMENT`: Kiểm tra số dư giao dịch và xác nhận thanh toán cho hóa đơn, cập nhật trạng thái `PAYMENT`.
+8. `SP_ARCHIVE_OLD_DATA`: Sao lưu các hợp đồng đã hoàn tất trên 2 năm sang các bảng Archive để tăng tốc hệ thống.
+9. `SP_CALCULATE_STAFF_COMMISSION`: Tính hoa hồng cho nhân viên dựa trên doanh số thực thu (tiền đã về ngân hàng).
+10. `SP_IMPORT_PRODUCT_JSON`: Tiếp nhận dữ liệu sản phẩm mới dưới dạng JSON và phân bổ vào các bảng `PRODUCT`, `SPECIFICATION`.
+
+---
+
+## 3. 10 Ràng buộc & Trigger
+1. `TRG_CHECK_CONTRACT_DATE`: Ngăn chặn việc tạo hợp đồng có ngày ký (`signed_date`) trước ngày báo giá.
+2. `TRG_AUTO_GEN_ID`: Trigger thay thế cho Identity để tự động sinh ID theo quy ước `PREFIX-HASH` khi insert.
+3. `TRG_UPDATE_STOCK_ON_DO`: Giảm số lượng tồn kho dự kiến khi một `DELIVERY_ORDER` được tạo.
+4. `TRG_LOG_PRICE_CHANGES`: Ghi lại lịch sử mỗi khi giá (`price`) của sản phẩm trong bảng `PRODUCT` bị thay đổi.
+5. `TRG_VALIDATE_CERTIFICATION`: Không cho phép thêm sản phẩm vào hợp đồng xuất khẩu nếu sản phẩm đó thiếu chứng chỉ bắt buộc.
+6. `TRG_SYNC_INVOICE_TOTAL`: Tự động cập nhật lại `total_amount` của hóa đơn khi các dòng `INVOICE_ITEM` bị xóa hoặc sửa.
+7. `TRG_PREVENT_DELETE_CUSTOMER`: Ngăn xóa khách hàng nếu khách hàng đó đang có hợp đồng còn hiệu lực.
+8. `TRG_AUTO_PAYMENT_STATUS`: Tự động chuyển trạng thái `PAYMENT` thành 'Completed' khi tổng tiền giao dịch bằng tiền hóa đơn.
+9. `TRG_CHECK_SHIPMENT_TIME`: Cảnh báo nếu thời gian khởi hành thực tế (`departure_time`) muộn hơn dự kiến.
+10. `TRG_NOTIFY_EXPIRY`: Khi một chứng chỉ được cập nhật ngày hết hạn mới, kiểm tra và ghi log nếu nó vi phạm quy trình vận hành.
+
+---
+
+## 4. 10 Khung nhìn (View) - Dành cho Báo cáo (BI)
+1. `VW_PRODUCT_FULL_INFO`: Join `PRODUCT`, `TYPE`, `PACKAGING`, `CERT` để xem toàn bộ thông số kỹ thuật sản phẩm.
+2. `VW_SALES_PIPELINE`: Theo dõi luồng từ `QUOTATION` -> `PI` -> `CONTRACT` -> `SALE_ORDER`.
+3. `VW_CUSTOMER_360`: Tổng hợp thông tin khách hàng, số hợp đồng đã ký, tổng chi tiêu và công nợ hiện tại.
+4. `VW_PENDING_SHIPMENTS`: Danh sách các đơn hàng đã có lệnh giao nhưng chưa có thông tin vận chuyển.
+5. `VW_MONTHLY_REVENUE`: Báo cáo doanh thu theo tháng, loại trừ các hóa đơn chưa thanh toán.
+6. `VW_STAFF_PERFORMANCE`: Báo cáo năng suất nhân viên: số báo giá, số hợp đồng và giá trị mang về.
+7. `VW_FACTORY_OUTPUT`: Thống kê sản lượng đã phân bổ cho từng nhà máy theo các đơn hàng hiện tại.
+8. `VW_FINANCIAL_HEALTH`: Tổng hợp dòng tiền: Tiền dự kiến thu (Hợp đồng) vs Tiền đã xuất hóa đơn vs Tiền đã về.
+9. `VW_EXPORT_COMPLIANCE`: Kiểm tra các bộ hồ sơ xuất khẩu (`EXPORT_DOCUMENT_SET`) còn thiếu chứng từ.
+10. `VW_LATE_ORDERS`: Danh sách các đơn hàng trễ tiến độ giao hàng hoặc trễ tiến độ thanh toán.
+
+---
+
+## 5. 10 Chỉ mục (Index) - Tối ưu hóa truy vấn
+1. `IDX_PRODUCT_NAME_TYPE`: Composite Index trên `name` và `product_type_id` để tăng tốc tìm kiếm sản phẩm.
+2. `IDX_CONTRACT_DATE`: Index trên `contract_date` để phục vụ các báo cáo theo khoảng thời gian.
+3. `IDX_CUSTOMER_TAX_ID`: Unique Index trên `tax_id` của khách hàng để đảm bảo tính duy nhất và tìm kiếm nhanh.
+4. `IDX_SALE_ORDER_STATUS`: Bitmap Index trên cột `status` (vì cột này có độ đa dạng dữ liệu thấp - Low Cardinality).
+5. `IDX_FK_QUOTATION_CUSTOMER`: Index trên các khóa ngoại để tối ưu các câu lệnh `JOIN`.
+6. `IDX_INVOICE_DUE_DATE`: Index trên `due_date` của hóa đơn để lọc các khoản nợ quá hạn.
+7. `IDX_SHIPMENT_ROUTE`: Index trên `transport_route_id` để phân tích tần suất các tuyến đường.
+8. `IDX_PAYMENT_REF_NUMBER`: Index trên `reference_number` của giao dịch ngân hàng để đối soát nhanh.
+9. `IDX_STAFF_DEPT`: Index trên `department` của nhân viên để lọc báo cáo theo phòng ban.
+10. `Function-based Index`: Tạo index trên `UPPER(company_name)` để tìm kiếm khách hàng không phân biệt hoa thường.
+

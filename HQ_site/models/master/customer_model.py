@@ -1,0 +1,18 @@
+class Customer(Base):
+    __tablename__ = "customer"
+    customer_id = Column(String(50), primary_key=True)
+    customer_type_id = Column(String(50), ForeignKey("customer_type.customer_type_id"))
+    customer_code = Column(String(50), unique=True)
+    company_name = Column(String(255), nullable=False)
+    short_name = Column(String(100))
+    tax_id = Column(String(50))
+    country = Column(String(100))
+    city = Column(String(100))
+    address = Column(String(500))
+    phone = Column(String(20))
+    email = Column(String(100))
+    website = Column(String(100))
+    industry = Column(String(100))
+    status = Column(String(20))
+    preferred_currency = Column(String(10))
+    created_at = Column(DateTime, server_default=func.now())
