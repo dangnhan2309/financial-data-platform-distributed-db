@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.3s ease-in-out;
+}
+
+/* Utility Classes */
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Button Styles */
+button {
+    transition: all 0.3s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Input Styles */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+}
+
+.badge-primary {
+    @apply bg-primary-200 text-primary-800;
+}
+
+.badge-success {
+    @apply bg-primary-100 text-primary-800;
+}
+
+.badge-warning {
+    @apply bg-accent text-primary-800;
+}
+
+.badge-danger {
+    @apply bg-red-100 text-red-800;
+}
+
+/* Card */
+.card {
+    @apply bg-white rounded-lg shadow-md p-6 border-2 border-primary-200;
+}
+
+.card:hover {
+    @apply shadow-lg transition-shadow;
+}
+
+/* Alert */
+.alert {
+    @apply px-4 py-3 rounded-lg;
+}
+
+.alert-success {
+    @apply bg-primary-50 border-2 border-primary-300 text-primary-800;
+}
+
+.alert-error {
+    @apply bg-red-50 border border-red-200 text-red-800;
+}
+
+.alert-warning {
+    @apply bg-accent-light border border-accent text-primary-800;
+}
+
+.alert-info {
+    @apply bg-primary-50 border-2 border-primary-300 text-primary-800;
+}
