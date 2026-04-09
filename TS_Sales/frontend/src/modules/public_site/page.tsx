@@ -5,12 +5,13 @@ export default function PublicSitePage() {
         <div>
             {/* Navigation Bar */}
             <nav className="fixed top-0 w-full bg-white shadow-md z-50 border-b-4 border-primary-700">
-                <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-primary-700 rounded-full flex items-center justify-center text-2xl">
-                            🌾
-                        </div>
-                        <div className="font-bold text-primary-700 text-2xl">GC Food</div>
+                <div className="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
+                    <div className="flex items-center">
+                        <img
+                            src="https://gcfood.com.vn/static/uploads/logo_GC_Food_ffaff2c3f8.svg"
+                            alt="GC Food Logo"
+                            className="h-20 object-contain py-2"
+                        />
                     </div>
                     <div className="hidden md:flex gap-8 items-center">
                         <a href="#about" className="text-gray-700 hover:text-primary-700 font-medium">Giới thiệu</a>
@@ -25,7 +26,15 @@ export default function PublicSitePage() {
             </nav>
 
             {/* Hero Section */}
-            <section className="pt-24 min-h-screen bg-gradient-to-b from-accent-light via-white to-accent-DEFAULT/10 flex items-center relative overflow-hidden">
+            <section
+                className="pt-24 min-h-screen flex items-center relative overflow-hidden"
+                style={{
+                    backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.8), rgba(255,255,255,0.7)), url("https://gcfood.com.vn/static/uploads/banner_1_9e29d3f680.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center right',
+                    backgroundAttachment: 'fixed'
+                }}
+            >
                 {/* Decorative shapes */}
                 <div className="absolute top-20 right-0 w-96 h-96 bg-primary-300/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-dark/5 rounded-full blur-3xl"></div>
@@ -167,19 +176,19 @@ export default function PublicSitePage() {
 
                     <div className="grid md:grid-cols-4 gap-6">
                         {[
-                            { name: 'Nha đam cắt hạt', desc: 'Tươi mới, sạch sẽ', icon: '🟢', color: 'from-primary-50' },
-                            { name: 'Nha đam xay', desc: 'Tinh nguyên chất', icon: '💚', color: 'from-primary-100' },
-                            { name: 'Nha đam lỏng', desc: 'Đã xử lý, sẵn dùng', icon: '🟩', color: 'from-primary-200' },
-                            { name: 'Thạch dừa', desc: 'Nguyên liệu cao cấp', icon: '🤎', color: 'from-secondary-100' },
-                            { name: 'Sữa dừa cô đặc', desc: '40% Brix, chất lượng A', icon: '🥥', color: 'from-secondary-200' },
-                            { name: 'Bột dừa sấy', desc: 'Hàm lượng chất béo cao', icon: '🟤', color: 'from-secondary-300' },
-                            { name: 'Nước dừa tươi', desc: 'Vô trùng, tiệt trùng', icon: '💧', color: 'from-accent-light' },
-                            { name: 'Dừa sấy lạnh', desc: 'Giữ nguyên hương vị', icon: '❄️', color: 'from-accent-DEFAULT' },
+                            { name: 'Nha đam cắt hạt', desc: 'Tươi mới, sạch sẽ', image: 'https://kaizenco.vn/wp-content/uploads/2022/10/ad1a466e4e88e33ba0a0996e8adff4ef.jpg', color: 'from-primary-50' },
+                            { name: 'Nha đam xay', desc: 'Tinh nguyên chất', image: 'https://hoaanhdao.vn/img/08/files/TIEN/6/7/1/cham-soc-toc-2.jpg', color: 'from-primary-100' },
+                            { name: 'Nha đam lỏng', desc: 'Đã xử lý, sẵn dùng', image: 'https://gcfood.com.vn/static/uploads/small_tac_dung_cua_nha_dam_ap_dung_tinh_chat_nha_dam_tai_nha_cho_lan_da_khoe_manh_c6e345abfd.jpg', color: 'from-primary-200' },
+                            { name: 'Thạch dừa', desc: 'Nguyên liệu cao cấp', image: 'https://gcfood.com.vn/static/uploads/san_pham_thach_dua_gc_food_15e757eff74d41eaa0f9e17a891777ee_master1_3347397e3e.jpg', color: 'from-secondary-100' },
+                            { name: 'Sữa dừa cô đặc', desc: '40% Brix, chất lượng A', image: 'https://www.thtbstore.com/cdn/shop/files/6_899785d7-7801-4fbc-a570-b032aa003a30_600x.png?v=1715592810', color: 'from-secondary-200' },
+                            { name: 'Bột dừa sấy', desc: 'Hàm lượng chất béo cao', image: 'https://dolambanhdanang.com/wp-content/uploads/2023/08/dua-vun-say-kho-100g-1691298217.jpeg', color: 'from-secondary-300' },
+                            { name: 'Nước dừa tươi', desc: 'Vô trùng, tiệt trùng', image: 'https://vn.foodland.sk/sub/foodland.sk/shop/product/cgfood-napoj-z-mladeho-kokosu-325ml-797.jpg', color: 'from-accent-light' },
+                            { name: 'Dừa sấy lạnh', desc: 'Giữ nguyên hương vị', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2OxTJGonJ2IXSS7p-B0VEKQPB7ZFhPMAgUA&s', color: 'from-accent-DEFAULT' },
                         ].map((product, idx) => (
-                            <div key={idx} className={`bg-gradient-to-br ${product.color} to-white rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 p-8 border-2 border-primary-200`}>
-                                <div className="text-6xl mb-4">{product.icon}</div>
+                            <div key={idx} className={`bg-gradient-to-br ${product.color} to-white rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 p-8 border-2 border-primary-200 flex flex-col`}>
+                                <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg mb-4" />
                                 <h4 className="text-lg font-bold text-primary-800 mb-2">{product.name}</h4>
-                                <p className="text-sm text-gray-600 mb-4">{product.desc}</p>
+                                <p className="text-sm text-gray-600 mb-4 flex-grow">{product.desc}</p>
                                 <button className="w-full bg-primary-700 text-white py-2 rounded-lg hover:bg-primary-800 font-semibold text-sm">
                                     Chi tiết
                                 </button>

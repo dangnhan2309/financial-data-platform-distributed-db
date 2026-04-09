@@ -38,15 +38,15 @@ export default function ExportDocumentDashboard() {
     const [selectedDoc, setSelectedDoc] = useState<any>(null);
 
     const statusColors: Record<string, string> = {
-        PENDING: 'bg-yellow-100 text-yellow-800',
-        ISSUED: 'bg-green-100 text-green-800',
-        COMPLETED: 'bg-emerald-100 text-emerald-800',
+        PENDING: 'bg-accent-light text-primary-700',
+        ISSUED: 'bg-green-50 text-green-800',
+        COMPLETED: 'bg-primary-50 text-primary-700',
     };
 
     return (
         <div className="space-y-8">
             <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">📑 Bộ Chứng từ Xuất khẩu</h1>
+                <h1 className="text-3xl font-bold text-primary-700 mb-2">📑 Bộ Chứng từ Xuất khẩu</h1>
                 <p className="text-gray-600">Quản lý các chứng từ xuất khẩu: C/O, CQ, Packing List, B/L</p>
             </div>
 
@@ -55,10 +55,10 @@ export default function ExportDocumentDashboard() {
                 {['PENDING', 'ISSUED', 'COMPLETED'].map((status) => {
                     const docs = mockExportDocs.filter(d => d.status === status);
                     return (
-                        <div key={status} className="bg-white rounded-lg shadow p-6">
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">
+                        <div key={status} className="bg-white rounded-lg shadow p-6 border-l-4 border-primary-700">
+                            <h3 className="text-lg font-bold text-primary-700 mb-4">
                                 {status === 'PENDING' ? '⏳ Chưa phát hành' : status === 'ISSUED' ? '✅ Đã phát hành' : '🎉 Hoàn thành'}
-                                <span className="text-sm ml-2 bg-gray-200 text-gray-800 px-2 py-1 rounded-full">({docs.length})</span>
+                                <span className="text-sm ml-2 bg-primary-100 text-primary-700 px-2 py-1 rounded-full">({docs.length})</span>
                             </h3>
                             <div className="space-y-3">
                                 {docs.map((doc) => (
@@ -169,7 +169,30 @@ export default function ExportDocumentDashboard() {
             {showForm && (
                 <ExportDocForm onClose={() => setShowForm(false)} />
             )}
-        </div>
+            {/* Insights Footer */}
+            <div className="bg-accent-light border-l-4 border-primary-700 rounded-lg p-6">
+                <h3 className="text-base font-bold text-primary-700 mb-4 flex items-center gap-2">
+                    💡 Những Thông tin Chính
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div>
+                        <p className="font-semibold text-primary-700 mb-1">✅ Tỷ lệ Hoàn tất Chứng từ</p>
+                        <p className="text-gray-700">81% chứng từ hoàn tất đầy đủ. Điểm yếu: B/L (68% hoàn tất).</p>
+                    </div>
+                    <div>
+                        <p className="font-semibold text-primary-700 mb-1">⏱️ Thời gian Chuẩn bị</p>
+                        <p className="text-gray-700">Trung bình 5-7 ngày từ SO tới chứng từ. Mục tiêu: 3-4 ngày.</p>
+                    </div>
+                    <div>
+                        <p className="font-semibold text-primary-700 mb-1">📄 Loại Chứng từ Phổ biến</p>
+                        <p className="text-gray-700">C/O 95% (bắt buộc), B/L 85%, Packing List 100%, CQ 75%.</p>
+                    </div>
+                    <div>
+                        <p className="font-semibold text-primary-700 mb-1">🔄 Sai sót Bao lần</p>
+                        <p className="text-gray-700">2-3 lần sửa đổi trước khi phát hành. Focus: L/C matching & specs.</p>
+                    </div>
+                </div>
+            </div>        </div>
     );
 }
 
